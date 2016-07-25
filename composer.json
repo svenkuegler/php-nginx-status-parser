@@ -1,0 +1,26 @@
+{
+  "name": "svenkuegler/php-nginx-status-parser",
+  "description": "PHP Parser for Nginx Status Page",
+  "minimum-stability": "stable",
+  "type": "library",
+  "homepage": "https://github.com/svenkuegler/php-nginx-status-parser",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sven Kuegler",
+      "email": "sven.kuegler@gmail.com",
+      "homepage": "http://www.sven-kuegler.de",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "dev-master",
+    "codeclimate/php-test-reporter": "dev-master"
+  },
+  "autoload": {
+    "classmap": ["src/NginxStatusParser.php"]
+  }
+}
