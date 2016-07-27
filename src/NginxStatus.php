@@ -101,7 +101,7 @@ class NginxStatus {
      */
     public function getRequestsPerConnection()
     {
-        return $this->requestsPerConnection;
+        return number_format($this->requestsPerConnection, 3);
     }
 
     /**

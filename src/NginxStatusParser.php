@@ -31,14 +31,10 @@ class NginxStatusParser {
      * @throws NginxStatusException
      */
     private function loadStatusPage() {
-        if(is_null($this->statusPage)) {
-            throw new NginxStatusException("No status page defined", 1);
-        }
-
         $this->statusPageContent = @file($this->statusPage);
 
         if($this->statusPageContent == false) {
-            throw new NginxStatusException("Could not parse given page", 2);
+            throw new NginxStatusException("Could not parse given page", 1);
         }
     }
 
@@ -51,12 +47,12 @@ class NginxStatusParser {
         $result = new NginxStatus();
 
         if(!count($this->statusPageContent) == 4) {
-            throw new NginxStatusException("Result seems to be invalid!", 3);
+            throw new NginxStatusException("Result seems to be invalid!", 2);
         }
 
         $tmpRow = array();
         for($i=0; $i<count($this->statusPageContent); $i++) {
-            preg_match($this->_getRegex()[$i], $this->statusPageContent[$i], $tmpRow[$i]);
+            preg_match($this->getRegex()[$i], $this->statusPageContent[$i], $tmpRow[$i]);
         }
 
         $result->setActiveConnections($tmpRow[0][1]);
@@ -75,7 +71,7 @@ class NginxStatusParser {
     /**
      * @return array
      */
-    private function _getRegex() {
+    private function getRegex() {
         return array(
             "/Active connections\: ([0-9]+)/i",
             "/server accepts handled requests/i",

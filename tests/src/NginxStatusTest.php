@@ -24,7 +24,7 @@ class NginxStatusTest extends PHPUnit_Framework_TestCase
      * @covers NginxStatus::setHandledRequests
      * @covers NginxStatus::setStatusReading
      * @covers NginxStatus::setStatusWriting
-     * @covers NginxStatus::setStatusWriting
+     * @covers NginxStatus::setStatusWaiting
      * @covers NginxStatus::setRequestsPerConnection
      */
     public function testSetter() {
@@ -34,7 +34,7 @@ class NginxStatusTest extends PHPUnit_Framework_TestCase
         self::$status->setStatusReading(4);
         self::$status->setStatusWriting(5);
         self::$status->setStatusWaiting(6);
-        self::$status->setRequestsPerConnection(7);
+        self::$status->setRequestsPerConnection(7.123);
     }
 
     /**
@@ -43,7 +43,7 @@ class NginxStatusTest extends PHPUnit_Framework_TestCase
      * @covers NginxStatus::getHandledRequests
      * @covers NginxStatus::getStatusReading
      * @covers NginxStatus::getStatusWriting
-     * @covers NginxStatus::getStatusWriting
+     * @covers NginxStatus::getStatusWaiting
      * @covers NginxStatus::getRequestsPerConnection
      */
     public function testGetter() {
@@ -53,6 +53,6 @@ class NginxStatusTest extends PHPUnit_Framework_TestCase
         $this->assertEquals( 4, self::$status->getStatusReading());
         $this->assertEquals( 5, self::$status->getStatusWriting());
         $this->assertEquals( 6, self::$status->getStatusWaiting());
-        $this->assertEquals( 7, self::$status->getRequestsPerConnection());
+        $this->assertEquals( 7.123, self::$status->getRequestsPerConnection());
     }
 }
